@@ -1,0 +1,99 @@
+<scenario>
+<definestring name='Interface' value='C2 HOST'/>
+<definestring name='Air' value='12'/>
+<definestring name='Land' value='48'/>
+<definestring name='Surface' value='12'/>
+<definestring name='SubSurface' value='12'/>
+<definestring name='Space' value='12'/>
+<definestring name='Reference_Point' value='12'/>
+<definestring name='EW' value='12'/>
+<definestring name='Unit' value='12'/>
+
+<profile name='TOAD_J-Series_Air'
+   tracktype='TOAD_J-Series_Air'
+   interface='C2 HOST'
+   defaultTurnRate='180'
+   defaultClimbRate='1000'
+   defaultDescentRate='500'
+   defaultAccelerationRate='2.6'
+   defaultDecelerationRate='2'
+   updateInterval='12'/>
+
+<profile name='TOAD_J-Series_EW'
+   tracktype='TOAD_J-Series_EW'
+   interface='C2 HOST'
+   defaultTurnRate='180'
+   defaultClimbRate='1000'
+   defaultDescentRate='500'
+   defaultAccelerationRate='2.6'
+   defaultDecelerationRate='2'
+   updateInterval='12'/>
+
+<profile name='TOAD_J-Series_Land'
+   tracktype='TOAD_J-Series_Land'
+   interface='C2 HOST'
+   defaultTurnRate='180'
+   defaultClimbRate='1000'
+   defaultDescentRate='500'
+   defaultAccelerationRate='2.6'
+   defaultDecelerationRate='2'
+   updateInterval='48'/>
+
+<profile name='TOAD_J-Series_Reference_Point'
+   tracktype='TOAD_J-Series_Reference_Point'
+   interface='C2 HOST'
+   defaultTurnRate='180'
+   defaultClimbRate='1000'
+   defaultDescentRate='500'
+   defaultAccelerationRate='2.6'
+   defaultDecelerationRate='2'
+   updateInterval='12'/>
+
+<profile name='TOAD_J-Series_Space'
+   tracktype='TOAD_J-Series_Space'
+   interface='C2 HOST'
+   defaultTurnRate='180'
+   defaultClimbRate='1000'
+   defaultDescentRate='500'
+   defaultAccelerationRate='2.6'
+   defaultDecelerationRate='2'
+   updateInterval='12'/>
+
+<profile name='TOAD_J-Series_Surface'
+   tracktype='TOAD_J-Series_Surface'
+   interface='C2 HOST'
+   defaultTurnRate='180'
+   defaultClimbRate='1000'
+   defaultDescentRate='500'
+   defaultAccelerationRate='2.6'
+   defaultDecelerationRate='2'
+   updateInterval='12'/>
+
+<profile name='TOAD_J-Series_SubSurface'
+   tracktype='TOAD_J-Series_SubSurface'
+   interface='C2 HOST'
+   defaultTurnRate='180'
+   defaultClimbRate='1000'
+   defaultDescentRate='500'
+   defaultAccelerationRate='2.6'
+   defaultDecelerationRate='2'
+   updateInterval='12'/>
+
+
+<profile name='TOAD_J-Series_Unit'
+   tracktype='TOAD_J-Series_Unit'
+   interface='C2 HOST'
+   defaultTurnRate='180'
+   defaultClimbRate='1000'
+   defaultDescentRate='500'
+   defaultAccelerationRate='2.6'
+   defaultDecelerationRate='2'
+   updateInterval='12'/>
+
+<body>
+
+${track_block}
+
+<wait seconds='86400'/>
+</body>
+</scenario>
