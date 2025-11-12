@@ -1,0 +1,150 @@
+{
+  "air_platform": [
+    "N.S.",
+    "Fighter",
+    "Fighter Bomber",
+    "Attack",
+    "Bomber",
+    "Reconnaissance",
+    "Tanker",
+    "Tanker (Boom Only)",
+    "Tanker (Drogue Only)",
+    "Interceptor",
+    "Transport",
+    "Airborne Command Post (ACP)",
+    "Missile",
+    "Electronic Warfare (EW)",
+    "Antisubmarine Warfare (ASW)",
+    "Airborne Early Warning and Control (AEW)",
+    "Maritime Patrol Aircraft (MPA)",
+    "Search and Rescue (SAR)",
+    "Drone",
+    "Remotely Piloted Vehicle (RPV)",
+    "Fixed Wing Gunship",
+    "Civil, Airliner",
+    "Civil, General",
+    "Lighter than Air (LTA)",
+    "Glider",
+    "Decoy",
+    "Helicopter (HELO)",
+    "Attack Helicopter",
+    "Helicopter Gunship",
+    "Antisubmarine Warfare Helicopter (ASW HELO)",
+    "Mine Warfare Helicopter",
+    "Transport Helicopter",
+    "Tactical Support",
+    "Patrol",
+    "Miscellaneous Fixed Wing",
+    "Missile Control Unit",
+    "Surface-to-Air Missile (SAM)",
+    "Air-to-Surface Missile (ASM)",
+    "Surface-to-Surface Missile (SSM)",
+    "Logistic",
+    "Air-to-Air Missile (AAM)",
+    "Subsurface-to-Surface Missile",
+    "Surface-to-Subsurface Missile",
+    "Cruise Missile",
+    "Ballistic Missile",
+    "Airborne Land Surveillance",
+    "Airborne Laser",
+    "Unmanned Aerial Vehicle (UAV)",
+    "Active Electronic Decoy",
+    "Infrared Decoy",
+    "Chaff Decoy",
+    "Hypersonic Vehicle",
+    "Network Enabled Weapon",
+    "RESET TO NO STATEMENT"
+  ],
+
+  "tracktype35": [
+    "TRACK",
+    "POINT"
+  ],
+
+  "ew_environment": [
+    "Air",
+    "Land",
+    "Surface",
+    "Subsurface",
+    "Space"
+  ],
+
+  "ew_ind_name": [
+    "J3.7 Track(EW Product Info)",
+    "J3.7 Track(EW Product Info) with J14.0 Parametric Info",
+    "J14.0 Track(EW Parametrics)"
+  ],
+
+  "track_ind_name": [
+    "J3.4 Track(ASW)",
+    "J5.4 Track(ASW Acoustic Bearing/Range)"
+  ],
+
+  "asw1_amp": [
+    "N.S.",
+    "Charted Wreck",
+    "Bottomed Nonsubmarine",
+    "ASW Station"
+  ],
+
+  "spitype": [
+    "Yes",
+    "No"
+  ],
+
+  "space_boost_indicator": [
+    "NOT IN BOOST PHASE",
+    "IN BOOST PHASE"
+  ],
+
+  "space_lost": [
+    "Tracking",
+    "Lost"
+  ],
+
+  "doppler_type_list": [
+    "N.S.",
+    "NO DOPPLER",
+    "UP DOPPLER",
+    "DOWN DOPPLER"
+  ],
+
+  "sensor_depth_list": [
+    "N.S.",
+    "ABOVE LAYER",
+    "BELOW LAYER"
+  ],
+
+  "audio_list": [
+    "N.S.",
+    "AUDIO"
+  ],
+
+  "broadband_noise_list": [
+    "N.S.",
+    "BROADBAND NOISE"
+  ],
+
+  "track_identity": [
+    "Unknown",
+    "Pending",
+    "Hostile",
+    "Friend",
+    "Neutral",
+    "Assumed Friend",
+    "Suspect"
+  ],
+
+  "mode_4_indicator": [
+    "Not Interrogated",
+    "No Response",
+    "Invalid Response",
+    "Valid Response"
+  ],
+
+  "mode_5_indicator": [
+    "N.S.",
+    "Interrogated, No Response",
+    "Interrogated, Valid Response"
+  ]
+}
