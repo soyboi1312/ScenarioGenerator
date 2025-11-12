@@ -299,36 +299,36 @@
             <div class="section">
                 <h2>1. Select Track Profiles</h2>
                 <div class="profile-grid">
-                    <div class="profile-option" onclick="toggleProfile(this, 'TOAD_J-Series_Reference_Point')">
-                        <input type="checkbox" id="profile_reference" value="TOAD_J-Series_Reference_Point">
+                    <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_Reference_Point')">
+                        <input type="checkbox" id="profile_reference" value="TOAD_J-Series_Reference_Point" checked>
                         <label for="profile_reference">Reference Point</label>
                     </div>
-                    <div class="profile-option" onclick="toggleProfile(this, 'TOAD_J-Series_Air')">
-                        <input type="checkbox" id="profile_air" value="TOAD_J-Series_Air">
+                    <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_Air')">
+                        <input type="checkbox" id="profile_air" value="TOAD_J-Series_Air" checked>
                         <label for="profile_air">Air</label>
                     </div>
-                    <div class="profile-option" onclick="toggleProfile(this, 'TOAD_J-Series_Land')">
-                        <input type="checkbox" id="profile_land" value="TOAD_J-Series_Land">
+                    <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_Land')">
+                        <input type="checkbox" id="profile_land" value="TOAD_J-Series_Land" checked>
                         <label for="profile_land">Land</label>
                     </div>
-                    <div class="profile-option" onclick="toggleProfile(this, 'TOAD_J-Series_Surface')">
-                        <input type="checkbox" id="profile_surface" value="TOAD_J-Series_Surface">
+                    <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_Surface')">
+                        <input type="checkbox" id="profile_surface" value="TOAD_J-Series_Surface" checked>
                         <label for="profile_surface">Surface</label>
                     </div>
-                    <div class="profile-option" onclick="toggleProfile(this, 'TOAD_J-Series_SubSurface')">
-                        <input type="checkbox" id="profile_subsurface" value="TOAD_J-Series_SubSurface">
+                    <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_SubSurface')">
+                        <input type="checkbox" id="profile_subsurface" value="TOAD_J-Series_SubSurface" checked>
                         <label for="profile_subsurface">Subsurface</label>
                     </div>
-                    <div class="profile-option" onclick="toggleProfile(this, 'TOAD_J-Series_Space')">
-                        <input type="checkbox" id="profile_space" value="TOAD_J-Series_Space">
+                    <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_Space')">
+                        <input type="checkbox" id="profile_space" value="TOAD_J-Series_Space" checked>
                         <label for="profile_space">Space</label>
                     </div>
-                    <div class="profile-option" onclick="toggleProfile(this, 'TOAD_J-Series_EW')">
-                        <input type="checkbox" id="profile_ew" value="TOAD_J-Series_EW">
+                    <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_EW')">
+                        <input type="checkbox" id="profile_ew" value="TOAD_J-Series_EW" checked>
                         <label for="profile_ew">EW</label>
                     </div>
-                    <div class="profile-option" onclick="toggleAll(this)">
-                        <input type="checkbox" id="profile_all" value="ALL">
+                    <div class="profile-option selected" onclick="toggleAll(this)">
+                        <input type="checkbox" id="profile_all" value="ALL" checked>
                         <label for="profile_all">All Profiles</label>
                     </div>
                 </div>
@@ -4901,8 +4901,16 @@
         // Make DATA available globally
         window.TRACK_DATA = TRACK_DATA;
 
-        // Track selected profiles
-        let selectedProfiles = [];
+        // Track selected profiles - initialize with all profiles selected by default
+        let selectedProfiles = [
+            'TOAD_J-Series_Reference_Point',
+            'TOAD_J-Series_Air',
+            'TOAD_J-Series_Land',
+            'TOAD_J-Series_Surface',
+            'TOAD_J-Series_SubSurface',
+            'TOAD_J-Series_Space',
+            'TOAD_J-Series_EW'
+        ];
         let includeAllFields = true;
 
         // Optional fields for each profile type
