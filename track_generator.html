@@ -281,9 +281,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="ultra.png" alt="Ultra Logo" class="header-logo">
-            <h1>Track Generator</h1>
-            <p>Convert track profiles to XML scenario files</p>
+            <img src="files/ultra.png" alt="Ultra Logo" class="header-logo">
+            <h1>TacView Scenario Generator</h1>
         </div>
 
         <div class="content">
@@ -293,23 +292,31 @@
                 <p>2. Configure the number of tracks and starting position</p>
                 <p>3. Optionally uncheck "Include All Fields" to customize which optional fields to include</p>
                 <p>4. Click "Generate XML" to create your scenario file</p>
-                <p><strong>Note:</strong> Latitude and Longitude are always required for all profiles.</p>
+                <p><strong>Note:</strong> Latitude and Longitude always included all profiles.</p>
             </div>
 
             <div class="section">
                 <h2>1. Select Track Profiles</h2>
                 <div class="profile-grid">
-                    <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_Reference_Point')">
-                        <input type="checkbox" id="profile_reference" value="TOAD_J-Series_Reference_Point" checked>
-                        <label for="profile_reference">Reference Point</label>
+                    <div class="profile-option selected" onclick="toggleAll(this)">
+                        <input type="checkbox" id="profile_all" value="ALL" checked>
+                        <label for="profile_all">All Profiles</label>
                     </div>
                     <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_Air')">
                         <input type="checkbox" id="profile_air" value="TOAD_J-Series_Air" checked>
                         <label for="profile_air">Air</label>
                     </div>
+                    <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_EW')">
+                        <input type="checkbox" id="profile_ew" value="TOAD_J-Series_EW" checked>
+                        <label for="profile_ew">EW</label>
+                    </div>
                     <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_Land')">
                         <input type="checkbox" id="profile_land" value="TOAD_J-Series_Land" checked>
                         <label for="profile_land">Land</label>
+                    </div>
+                    <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_Reference_Point')">
+                        <input type="checkbox" id="profile_reference" value="TOAD_J-Series_Reference_Point" checked>
+                        <label for="profile_reference">Reference Point</label>
                     </div>
                     <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_Surface')">
                         <input type="checkbox" id="profile_surface" value="TOAD_J-Series_Surface" checked>
@@ -322,14 +329,6 @@
                     <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_Space')">
                         <input type="checkbox" id="profile_space" value="TOAD_J-Series_Space" checked>
                         <label for="profile_space">Space</label>
-                    </div>
-                    <div class="profile-option selected" onclick="toggleProfile(this, 'TOAD_J-Series_EW')">
-                        <input type="checkbox" id="profile_ew" value="TOAD_J-Series_EW" checked>
-                        <label for="profile_ew">EW</label>
-                    </div>
-                    <div class="profile-option selected" onclick="toggleAll(this)">
-                        <input type="checkbox" id="profile_all" value="ALL" checked>
-                        <label for="profile_all">All Profiles</label>
                     </div>
                 </div>
             </div>
@@ -363,7 +362,6 @@
                     <label for="select_all_fields">Include All Optional Fields (Recommended)</label>
                 </div>
                 <div id="fields-container" class="fields-section" style="display: none;">
-                    <!-- Optional fields will be dynamically populated here based on selected profiles -->
                 </div>
             </div>
 
@@ -5343,7 +5341,7 @@
                     track.fields['Bearing 1'] = randomInt(0, 359);
                     track.fields['Bearing Origin'] = 'Latitude/Longitude';
                     track.fields['Audio'] = randomChoice(TRACK_DATA.audio_list);
-                    track.fields['Sensor Depth'] = randomChoice(TRACK_DATA.sensor_depth_list);
+                    track.fields['Depth, Sensor'] = randomChoice(TRACK_DATA.sensor_depth_list);
                     track.fields['Broadband Noise'] = randomChoice(TRACK_DATA.broadband_noise_list);
                     track.fields['Doppler'] = randomChoice(TRACK_DATA.doppler_type_list);
                     track.fields['Sound Propagation Path'] = randomChoice(TRACK_DATA.sound_prop_list);
