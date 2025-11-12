@@ -5175,8 +5175,12 @@
             const lineLength = 1000;
 
             for (let i = 0; i < numTracks; i++) {
-                const lat = startLat + latOffset;
-                const lon = startLong + longOffset;
+                // Add random scatter to position (±0.01 degrees = ~1.1km at equator)
+                const randomLatScatter = (Math.random() - 0.5) * 0.02;
+                const randomLonScatter = (Math.random() - 0.5) * 0.02;
+
+                const lat = startLat + latOffset + randomLatScatter;
+                const lon = startLong + longOffset + randomLonScatter;
 
                 longOffset += 0.02;
                 if (i % lineLength === 0 && i !== 0) {
