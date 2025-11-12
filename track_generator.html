@@ -283,8 +283,9 @@
                 <p><strong>Instructions:</strong></p>
                 <p>1. Select one or more track profiles below</p>
                 <p>2. Configure the number of tracks and starting position</p>
-                <p>3. Select which fields to include (optional)</p>
+                <p>3. Optionally uncheck "Include All Fields" to customize which optional fields to include</p>
                 <p>4. Click "Generate XML" to create your scenario file</p>
+                <p><strong>Note:</strong> Latitude and Longitude are always required for all profiles.</p>
             </div>
 
             <div class="section">
@@ -348,13 +349,13 @@
             </div>
 
             <div class="section">
-                <h2>3. Field Selection (Optional)</h2>
+                <h2>3. Optional Field Selection</h2>
                 <div class="checkbox-all">
                     <input type="checkbox" id="select_all_fields" checked onchange="toggleAllFields(this)">
-                    <label for="select_all_fields">Include All Fields (Recommended)</label>
+                    <label for="select_all_fields">Include All Optional Fields (Recommended)</label>
                 </div>
                 <div id="fields-container" class="fields-section" style="display: none;">
-                    <!-- Fields will be dynamically populated here based on selected profiles -->
+                    <!-- Optional fields will be dynamically populated here based on selected profiles -->
                 </div>
             </div>
 
@@ -385,50 +386,128 @@
         let selectedProfiles = [];
         let includeAllFields = true;
 
-        // Profile field definitions
-        const PROFILE_FIELDS = {
-            'TOAD_J-Series_Reference_Point': [
-                'name', 'latitude', 'longitude', 'altitude', 'platform', 'amplification'
-            ],
+        // Optional fields for each profile type
+        // Latitude and Longitude are ALWAYS required and not shown as optional
+        // Any field not listed here will be automatically included
+        const OPTIONAL_FIELDS = {
             'TOAD_J-Series_Air': [
-                'name', 'callsign', 'latitude', 'longitude', 'course', 'speed', 'altitude',
-                'platform', 'activity', 'specific_type', 'hour', 'minute', 'strength',
-                'spi', 'identity', 'mode_1', 'mode_2', 'mode_3', 'mode_4_indicator',
-                'mode_5_indicator', 'mode_5_nationality', 'mode_5_platform_id',
-                'mode_1_enhanced', 'mode_s_aircraft', 'track_label'
+                'Callsign Published',
+                'True Course',
+                'Speed',
+                'Altitude',
+                'Platform',
+                'Activity',
+                'Specific Type',
+                'Strength',
+                'Local TQ',
+                'SPI',
+                'Identity',
+                'Hour',
+                'Minute',
+                'Mode 1 Code',
+                'Mode 2 Code',
+                'Mode 3 Code',
+                'Mode 4 Indicator',
+                'Mode 5 Indicator',
+                'Mode 5 Nationality'
             ],
             'TOAD_J-Series_Land': [
-                'name', 'latitude', 'longitude', 'elevation', 'land_type', 'course', 'speed',
-                'platform', 'activity', 'specific_type', 'hour', 'minute', 'strength',
-                'spi', 'identity', 'mode_1', 'mode_2', 'mode_3', 'mode_4_indicator',
-                'mode_5_indicator', 'mode_5_nationality', 'mode_5_platform_id',
-                'mode_1_enhanced', 'track_label'
-            ],
-            'TOAD_J-Series_Surface': [
-                'name', 'latitude', 'longitude', 'course', 'speed', 'platform', 'activity',
-                'specific_type', 'hour', 'minute', 'strength', 'spi', 'identity',
-                'mode_1', 'mode_2', 'mode_3', 'mode_4_indicator', 'mode_5_indicator',
-                'mode_5_nationality', 'mode_5_platform_id', 'mode_1_enhanced', 'track_label'
+                'True Course',
+                'Speed',
+                'Elevation',
+                'Point/Track Ind',
+                'Platform',
+                'Activity',
+                'Specific Type',
+                'Strength',
+                'Local TQ',
+                'SPI',
+                'Identity',
+                'Hour',
+                'Minute',
+                'Mode 1 Code',
+                'Mode 2 Code',
+                'Mode 3 Code',
+                'Mode 4 Indicator',
+                'Mode 5 Indicator',
+                'Mode 5 Nationality'
             ],
             'TOAD_J-Series_SubSurface': [
-                'name', 'latitude', 'longitude', 'depth', 'course', 'speed', 'platform',
-                'activity', 'specific_type', 'track_indicator', 'hour', 'minute', 'spi',
-                'identity', 'mode_1', 'mode_2', 'mode_3', 'mode_4_indicator',
-                'mode_5_indicator', 'mode_5_nationality', 'mode_5_platform_id',
-                'mode_1_enhanced', 'subsurface_sensor', 'confidence_level', 'depth_contact',
-                'bearing_origin', 'audio', 'sensor_depth', 'broadband_noise', 'doppler',
-                'sound_propagation', 'track_label'
+                'True Course',
+                'Speed',
+                'Depth',
+                'Platform',
+                'Activity',
+                'Specific Type',
+                'Local TQ',
+                'SPI',
+                'Identity',
+                'Hour',
+                'Minute',
+                'Mode 1 Code',
+                'Mode 2 Code',
+                'Mode 3 Code',
+                'Mode 4 Indicator',
+                'Mode 5 Indicator',
+                'Mode 5 Nationality',
+                'Subsurface Sensor',
+                'Confidence Level',
+                'Depth Contact'
             ],
             'TOAD_J-Series_Space': [
-                'name', 'latitude', 'longitude', 'altitude', 'course', 'speed', 'platform',
-                'activity', 'specific_type', 'amplification', 'amplification_ambiguity',
-                'minute', 'seconds', 'boost_indicator', 'lost_track_indicator', 'spi',
-                'identity', 'track_label'
+                'True Course',
+                'Speed',
+                'Altitude',
+                'Platform',
+                'Activity',
+                'Specific Type',
+                'Local TQ',
+                'SPI',
+                'Identity',
+                'Minute',
+                'Seconds',
+                'Boost Ind',
+                'Lost Track Indicator',
+                'Space Amplification',
+                'Space Amplification Ambiguity 1'
+            ],
+            'TOAD_J-Series_Surface': [
+                'True Course',
+                'Speed',
+                'Platform',
+                'Activity',
+                'Specific Type',
+                'Strength',
+                'Local TQ',
+                'SPI',
+                'Identity',
+                'Hour',
+                'Minute',
+                'Mode 1 Code',
+                'Mode 3 Code',
+                'Mode 2 Code',
+                'Mode 4 Indicator',
+                'Mode 5 Indicator',
+                'Mode 5 Nationality'
             ],
             'TOAD_J-Series_EW': [
-                'name', 'latitude', 'longitude', 'altitude', 'course', 'speed', 'track_type',
-                'environment_category', 'platform', 'activity', 'specific_type',
-                'track_indicator', 'spi', 'identity', 'track_label'
+                'True Course',
+                'Speed',
+                'Altitude',
+                'Environ/Category',
+                'Platform',
+                'Activity',
+                'Track 3.7/14.0 Indicator',
+                'Specific Type',
+                'SPI',
+                'Identity'
+            ],
+            'TOAD_J-Series_Reference_Point': [
+                'True Course',
+                'Speed',
+                'Altitude',
+                'Amplification',
+                'SPI'
             ]
         };
 
@@ -506,46 +585,36 @@
                 return;
             }
 
-            // Get unique fields from all selected profiles
-            const allFields = new Set();
+            // Get unique optional fields from all selected profiles
+            const allOptionalFields = new Set();
             selectedProfiles.forEach(profile => {
-                if (PROFILE_FIELDS[profile]) {
-                    PROFILE_FIELDS[profile].forEach(field => allFields.add(field));
+                if (OPTIONAL_FIELDS[profile]) {
+                    OPTIONAL_FIELDS[profile].forEach(field => allOptionalFields.add(field));
                 }
             });
 
-            // Create field groups
-            const fieldGroups = {
-                'Basic Information': ['name', 'callsign', 'track_label'],
-                'Position & Movement': ['latitude', 'longitude', 'altitude', 'elevation', 'depth', 'course', 'speed'],
-                'Classification': ['platform', 'activity', 'specific_type', 'identity', 'strength', 'spi'],
-                'Type & Indicators': ['land_type', 'track_type', 'track_indicator', 'environment_category', 'boost_indicator', 'lost_track_indicator'],
-                'Time': ['hour', 'minute', 'seconds'],
-                'Mode Codes': ['mode_1', 'mode_2', 'mode_3', 'mode_4_indicator', 'mode_5_indicator', 'mode_5_nationality', 'mode_5_platform_id', 'mode_1_enhanced', 'mode_s_aircraft'],
-                'Space Specific': ['amplification', 'amplification_ambiguity'],
-                'Subsurface Specific': ['subsurface_sensor', 'confidence_level', 'depth_contact', 'bearing_origin', 'audio', 'sensor_depth', 'broadband_noise', 'doppler', 'sound_propagation']
-            };
+            // Sort fields alphabetically
+            const sortedFields = Array.from(allOptionalFields).sort();
 
-            let html = '';
-            Object.entries(fieldGroups).forEach(([groupName, fields]) => {
-                const relevantFields = fields.filter(f => allFields.has(f));
-                if (relevantFields.length > 0) {
-                    html += `<div class="field-group">
-                        <h3>${groupName}</h3>
-                        <div class="field-options">`;
+            // Display info about required fields
+            let html = `<div style="background: #e7f3ff; border-left: 4px solid #2196F3; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
+                <p style="margin: 0; color: #0c5460;"><strong>Note:</strong> Latitude and Longitude are always required and included.
+                Fields not listed below will be automatically included. Uncheck any optional field to exclude it.</p>
+            </div>`;
 
-                    relevantFields.forEach(field => {
-                        const fieldId = `field_${field}`;
-                        const fieldLabel = field.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                        html += `<div class="field-option">
-                            <input type="checkbox" id="${fieldId}" value="${field}" checked>
-                            <label for="${fieldId}">${fieldLabel}</label>
-                        </div>`;
-                    });
+            html += `<div class="field-group">
+                <h3>Optional Fields</h3>
+                <div class="field-options">`;
 
-                    html += `</div></div>`;
-                }
+            sortedFields.forEach(field => {
+                const fieldId = `field_${field.replace(/[^a-zA-Z0-9]/g, '_')}`;
+                html += `<div class="field-option">
+                    <input type="checkbox" id="${fieldId}" value="${field}" checked>
+                    <label for="${fieldId}">${field}</label>
+                </div>`;
             });
+
+            html += `</div></div>`;
 
             fieldsContainer.innerHTML = html;
         }
@@ -607,6 +676,31 @@
             return tracks;
         }
 
+        // Helper function to check if a field should be included
+        function shouldIncludeField(fieldName, profile, selectedFields) {
+            // Latitude and Longitude are ALWAYS required
+            if (fieldName === 'Latitude' || fieldName === 'Longitude') {
+                return true;
+            }
+
+            // If including all fields, include everything
+            if (selectedFields === null) {
+                return true;
+            }
+
+            // Check if this field is in the optional fields list for this profile
+            const optionalFields = OPTIONAL_FIELDS[profile] || [];
+            const isOptional = optionalFields.includes(fieldName);
+
+            if (isOptional) {
+                // This is an optional field - only include if user selected it
+                return selectedFields.includes(fieldName);
+            } else {
+                // This is a required/automatic field - always include it
+                return true;
+            }
+        }
+
         function generateSingleTrack(index, profile, lat, lon, selectedFields) {
             const trackNumber = (512 + index).toString(8);
             const track = {
@@ -615,7 +709,7 @@
                 fields: {}
             };
 
-            // Common fields
+            // Required fields - always included
             track.fields['Latitude'] = lat.toFixed(6);
             track.fields['Longitude'] = lon.toFixed(6);
             track.fields['Track Label'] = trackNumber;
@@ -801,6 +895,17 @@
                 } else if (pointType === 'ASW, 1') {
                     track.fields['Amplification'] = randomChoice(TRACK_DATA.asw1_amp);
                 }
+            }
+
+            // Filter fields based on user selection
+            if (selectedFields !== null) {
+                const filteredFields = {};
+                Object.entries(track.fields).forEach(([fieldName, fieldValue]) => {
+                    if (shouldIncludeField(fieldName, profile, selectedFields)) {
+                        filteredFields[fieldName] = fieldValue;
+                    }
+                });
+                track.fields = filteredFields;
             }
 
             return track;
