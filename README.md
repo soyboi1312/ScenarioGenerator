@@ -1,2 +1,0 @@
-# ScenarioGenerator
-TacView Scenario Generator
