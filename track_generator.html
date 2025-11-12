@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #4a5568 0%, #718096 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -28,10 +28,17 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
             color: white;
             padding: 30px;
             text-align: center;
+        }
+
+        .header-logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: brightness(1.1);
         }
 
         .header h1 {
@@ -57,10 +64,10 @@
         }
 
         .section h2 {
-            color: #667eea;
+            color: #2d3748;
             margin-bottom: 15px;
             font-size: 1.5em;
-            border-bottom: 2px solid #667eea;
+            border-bottom: 2px solid #4a5568;
             padding-bottom: 10px;
         }
 
@@ -81,14 +88,14 @@
         }
 
         .profile-option:hover {
-            border-color: #667eea;
+            border-color: #4a5568;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 4px 12px rgba(74, 85, 104, 0.3);
         }
 
         .profile-option.selected {
-            border-color: #667eea;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-color: #4a5568;
+            background: linear-gradient(135deg, rgba(45, 55, 72, 0.1) 0%, rgba(74, 85, 104, 0.15) 100%);
         }
 
         .profile-option input[type="checkbox"] {
@@ -132,7 +139,7 @@
 
         .form-group input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #4a5568;
         }
 
         .fields-section {
@@ -148,7 +155,7 @@
         }
 
         .field-group h3 {
-            color: #764ba2;
+            color: #2d3748;
             margin-bottom: 10px;
             font-size: 1.2em;
         }
@@ -195,14 +202,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
             color: white;
             flex: 1;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 20px rgba(74, 85, 104, 0.5);
         }
 
         .btn-secondary {
@@ -241,8 +248,8 @@
         }
 
         .info-box {
-            background: #e7f3ff;
-            border-left: 4px solid #2196F3;
+            background: #e2e8f0;
+            border-left: 4px solid #4a5568;
             padding: 15px;
             margin-bottom: 20px;
             border-radius: 4px;
@@ -250,12 +257,12 @@
 
         .info-box p {
             margin: 5px 0;
-            color: #0c5460;
+            color: #2d3748;
         }
 
         .checkbox-all {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
+            background: #edf2f7;
+            border: 2px solid #718096;
             padding: 10px;
             border-radius: 6px;
             margin-bottom: 15px;
@@ -274,6 +281,7 @@
 <body>
     <div class="container">
         <div class="header">
+            <img src="ultra.png" alt="Ultra Logo" class="header-logo">
             <h1>Track Generator</h1>
             <p>Convert track profiles to XML scenario files</p>
         </div>
@@ -597,8 +605,8 @@
             const sortedFields = Array.from(allOptionalFields).sort();
 
             // Display info about required fields
-            let html = `<div style="background: #e7f3ff; border-left: 4px solid #2196F3; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
-                <p style="margin: 0; color: #0c5460;"><strong>Note:</strong> Latitude and Longitude are always required and included.
+            let html = `<div style="background: #e2e8f0; border-left: 4px solid #4a5568; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
+                <p style="margin: 0; color: #2d3748;"><strong>Note:</strong> Latitude and Longitude are always required and included.
                 Fields not listed below will be automatically included. Uncheck any optional field to exclude it.</p>
             </div>`;
 
